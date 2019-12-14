@@ -1,0 +1,427 @@
+@mixin transition($transition...) {
+	-moz-transition:	$transition;
+	-o-transition:	 $transition;
+	-webkit-transition: $transition;
+	transition:         $transition;
+}
+@mixin transition-property($property...) {
+	-moz-transition-property:    $property;
+	-o-transition-property:      $property;
+	-webkit-transition-property: $property;
+	transition-property:         $property;
+}
+@mixin transition-duration($duration...) {
+	-moz-transition-property:    $duration;
+	-o-transition-property:      $duration;
+	-webkit-transition-property: $duration;
+	transition-property:         $duration;
+}
+@mixin transition-timing-function($timing...) {
+	-moz-transition-timing-function:    $timing;
+	-o-transition-timing-function:      $timing;
+	-webkit-transition-timing-function: $timing;
+	transition-timing-function:         $timing;
+}
+@mixin transition-delay($delay...) {
+	-moz-transition-delay:    $delay;
+	-o-transition-delay:      $delay;
+	-webkit-transition-delay: $delay;
+	transition-delay:         $delay;
+}
+
+$col1: rgb(255, 50, 42);
+
+* {box-sizing:border-box;}
+
+.fr {float:right}
+.fl {float:left}
+.br {margin-top:1rem}
+.bra {margin-bottom:1rem}
+.pointer {cursor:pointer}
+.center {text-align:center}
+.centeri {text-align:center!important;}
+.right {text-align:right}
+.small {font-size:80%}
+.full {width:100%;}
+.flex {display:flex;}
+.flex-column {flex-direction:column;}
+.relative {position:relative;}
+.pre-line {white-space:pre-line;}
+.justify-center {justify-content:center;}
+.justify-space-around {justify-content:space-around;}
+.justify-space-between {justify-content:space-between;}
+.align-center {align-items:center;}
+.wrap {flex-wrap:wrap;}
+.b600 {flex-basis:600px;}
+.b900 {flex-basis:900px;}
+
+.fddown {
+	-webkit-mask-image:-webkit-gradient(linear, center top, center bottom, color-stop(0, rgba(0, 0, 0, 1)), color-stop(1.0, rgba(0, 0, 0, 0.1)));
+}
+
+table.center {margin:0 auto;}
+table.autoalign td, table.autoalign th {text-align:center;}
+table.autoalign td:first-child {text-align:left;}
+/*table.autoalign td:last-child {text-align:right;}*/
+
+table.simple {
+	margin:8px auto;
+	min-width:50%;
+	text-align:center;
+	background:rgba(0, 0, 0, 0.2);
+	border-collapse:collapse;
+	outline:1px solid #e7faf0;
+}
+
+.simple th {
+	text-align:center;
+	font-size:1.2em;
+	padding:0.5em;
+	color:#eee;
+}
+
+.simple tr {
+	font-size:0.8em;
+	border-top:1px solid #222;
+	border-bottom:1px solid #222;
+}
+
+.simple td {
+	padding:1em;
+}
+
+body {
+	padding:0;
+	margin:0;
+	background:#131313;
+	color:#f7eaf0;
+	font:16px 'Ubuntu',tahoma,sans-serif;
+	text-rendering:optimizeLegibility;
+}
+
+h5 {
+	font-size:20px;
+	margin:0;
+}
+
+h4 {
+	font-size:30px;
+	margin:0;
+}
+
+h3 {
+	font-size:40px;
+	margin:0.5em 0;
+}
+
+p {
+	white-space:pre-line;
+}
+
+/*******/
+//input
+
+a, a:active, a:focus {
+	color:$col1;
+	/*font-weight:bold;*/
+	text-decoration:none;
+	@include transition(0.5s ease color);
+}
+a:hover {color:$col1*1.5;text-decoration:none;}
+
+button[disabled], input[disabled], select[disabled] {
+	cursor:not-allowed;
+}
+
+a.btn {
+	text-shadow:0 0 transparent!important;
+}
+
+.btn, button, input[type="button"], input[type="submit"] {
+	outline:0;
+	cursor:pointer;
+	min-width:100px;
+	height:29px;
+	line-height:29px;
+	font-size:16px;
+	border-radius:4px;
+	font:16px 'Open Sans',sans-serif;
+	font-weight:bold;
+	border:3px solid $col1;
+	padding:0 4px 0 4px;
+	text-align:center;
+	color:$col1;
+	background:transparent;
+	white-space:nowrap;
+	@include transition(0.25s ease background,0.25s ease color,0.25s ease border-color,0.25s ease box-shadow);
+}
+.btn:hover, button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+	background:$col1*1.25;
+	color:black;
+	box-shadow:0 0 16px $col1*1.25, 0 0 2px black inset;
+	border-color:$col1*1.25;
+}
+
+.btn[disabled], button[disabled], input[type="button"][disabled], input[type="submit"][disabled] {
+	background:#222;
+	color:$col1*0.75;
+	border:3px solid $col1*0.4;
+	box-shadow:0 0 0,0 0 0;
+}
+
+button:focus {
+	outline:0;
+}
+
+*::placeholder {color:#555;}
+*::input-placeholder {color:#555;}
+*::-webkit-input-placeholder {color:#555;}
+*:-ms-input-placeholder {color:#555;}
+*::-ms-input-placeholder {color:#555;}
+*::-moz-placeholder {color:#555;}
+
+input[type="text"], input[type="number"], input[type="password"], textarea, select {
+	color:#dfdfdf;
+	background:#050505;
+	padding:0.1em 0.5em;
+	/*font-size:0.8em;*/
+	font-size:16px;
+	border-radius:4px;
+	border:2px solid #555;
+	outline:0;
+	@include transition(0.5s ease border,1.5s ease box-shadow);
+}
+
+input[type="text"], input[type="password"], textarea, select {
+	min-width:325px;
+}
+
+input[type="text"]:hover, input[type="number"]:hover, input[type="password"]:hover, textarea:hover, select:hover {
+	border:2px solid $col1;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus, textarea:focus, select:hover {
+	border:2px solid $col1*1.25;
+	box-shadow:0 0 12px $col1*1.25;
+}
+
+.nodec, .nodec:hover, .nodec:focus, .nodec:active {
+	border:0;
+	box-shadow:0 0;
+	outline:0;
+	padding:0;
+	background:transparent;
+}
+
+.checkbox {
+	width: 50px;
+	height: 24px;
+	margin:0;
+	background: #050505;
+	display: inline-block;
+	@include transition(0.2s ease background);
+	border: 1px solid $col1*0.9;
+	box-shadow:0 0 5px black inset;
+	border-radius: 4px;
+	text-align:left;
+}
+
+.checkbox:before {
+	width: 25%;
+	background: #eee;
+	display: inline-block;
+	height: 22px;
+	content: "";
+	position: relative;
+	@include transition(0.2s ease left);
+	left: 0px;
+	border:1px solid black;
+	vertical-align:middle;
+	border-radius:4px;
+	box-shadow:0 0 4px black inset;
+	cursor:ew-resize;
+}
+
+.checkbox.active {
+	background: orange;
+	border: 1px solid #111;
+}
+
+.checkbox.active:before {
+	left: 37px;
+}
+
+/*******/
+
+main {
+	min-height:100vh;
+}
+
+main > div {
+	min-height:100vh;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	flex-direction:column;
+	padding:1rem;
+}
+
+footer, #back {
+	opacity:0.18;
+	position:fixed;
+	bottom:4px;
+	right:4px;
+	font-size:12px;
+	white-space:nowrap;
+	overflow:hidden;
+	text-shadow:0 0 0.5em black;
+	@include transition(0.25s ease opacity);
+}
+
+footer:hover, #back:hover {
+	opacity:1;
+}
+
+footer div {
+	float:right;
+	padding:2px 4px;
+}
+
+.blog {
+	margin:0 auto;
+	max-width:1280px;
+}
+
+.blog article {
+	width:100%;
+	padding: 1rem;
+    margin: 1rem 0;
+    border-color: #f55;
+	border-style: solid;
+    border-width: 1px 0 2px 0;
+	border-radius: 0.5rem;
+}
+
+h1 {
+	text-align: center;
+	margin:0;
+	font-size:200%;
+	font-weight:bold;
+}
+
+h2 {
+	font-size:150%;
+	font-weight:bold;
+}
+
+h3 {
+	font-size:133%;
+	font-weight:bold;
+}
+
+h4 {
+	font-size:120%;
+	font-weight:bold;
+}
+
+h5 {
+	font-size:110%;
+	font-weight:bold;
+}
+
+h6 {
+	font-weight:bold;
+}
+
+.blog time {
+	display:block;
+	text-align: center;
+}
+
+.blog p {
+	font-size:15px;
+	letter-spacing:0.5px;
+	line-height: 1.4em;
+}
+
+.blog img {
+	max-width:100%;
+	display:block;
+	margin:0 auto;
+}
+
+.blog iframe, .blog video {
+	display:block;
+	margin:1rem auto;
+}
+
+.blog code {
+	background:black;
+	display:block;
+	max-height:10em;
+	overflow:auto;
+	padding:1em;
+	margin:0.5rem 0;
+	white-space: pre-line;
+}
+
+.skillgroup {
+	text-align: center;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content: center;
+}
+
+.skillgroup > div {
+	margin-left:2rem;
+	margin-right:2rem;
+	margin-top:1rem;
+	//margin-top:4rem;
+}
+
+.skills ul {
+	list-style-type: none;
+	font-size:13px;
+	//margin:0px 1rem;
+	//width:20em;
+	//border:1px solid #f55;
+	padding:1em;
+	//background:#1c1111;
+	//height: 100%;
+}
+
+#back {
+	left:4px;
+	right:initial;
+}
+
+::-webkit-scrollbar {
+	width:8px;
+	height:8px;
+}
+
+::-webkit-scrollbar-track {
+	background:#050505;
+}
+
+body .scrollbar-inner>.scroll-element .scroll-element_track, body ::-webkit-scrollbar-track {
+	background:transparent;
+}
+
+.scrollbar-inner>.scroll-element .scroll-bar, ::-webkit-scrollbar-thumb {
+	border-radius:10px;
+	background:$col1*0.6;
+	box-shadow:inset 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.scrollbar-inner>.scroll-element .scroll-bar:hover, ::-webkit-scrollbar-thumb:hover {
+	background:$col1*0.9;
+}
+
+.scrollbar-inner>.scroll-element .scroll-bar:active, ::-webkit-scrollbar-thumb:active {
+	background:$col1;
+}
+
+::-webkit-scrollbar-button:start, ::-webkit-scrollbar-button:end {
+	display:none;
+}

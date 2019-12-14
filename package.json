@@ -1,0 +1,22 @@
+{
+	"name": "averagewebsite-server",
+	"version": "1.1.0",
+	"description": "average.website",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"author": "JetBoom",
+	"license": "UNLICENSED",
+	"dependencies" : {
+		"winston": "latest",
+		"urlencode": "latest",
+		"escape-html": "latest",
+		"cookie": "latest",
+		"express": "latest",
+		"body-parser": "latest",
+		"cookie-parser": "latest",
+		"querystring": "latest",
+		"express-handlebars": "latest"
+	}
+}

@@ -1,0 +1,52 @@
+Removing bad games from the SteamDB sale list
+December 27, 2015
+<p><b>EDIT: SteamDB have since added a rating and discount filter to their website.</b>
+
+Here’s another Tampermonkey script. Steam sales are a great and often you want to see which games are the most percent off. Steam itself doesn’t have this feature, but SteamDB has a great sales section that lists all the games, how much they are, what percentage they’re off, and what rating they have. You can sort both sites by rating. You can also sort SteamDB by percentage off but unfortunately you cannot filter by minimum rating, resulting in a list of games with crappy ratings to sift through. This script fixes that by completely removing all games with bad ratings. If only Steam itself had this feature for its front page.
+
+<p>As usual, you’ll need Tampermonkey for Chrome or Greasemonkey for Firefox. It’s untested for Greasemonkey. Change the line with min_rating to whatever number you want. I’ve set it to 80%. Anything 79% or less will not show up at all.
+
+<code>// ==UserScript==
+// @name SteamDB Bad Game Remover
+// @namespace http://average.website
+// @version 1.0
+// @description Remove games on SteamDB that have less than a certain rating.
+// @author William Moodhe
+// @match https://steamdb.info/sales/
+// @grant none
+// @run-at document-end
+// ==/UserScript==
+/* jshint -W097 */
+'use strict';
+
+//////////////
+
+// What rating does the game need to show up on the list?
+var min_rating = 80;
+
+//////////////
+
+var ratings = document.querySelectorAll("table.table-sales td:nth-child(7) > span");
+var removed = 0;
+
+var td;
+var inner;
+var rating;
+var i;
+for (i=0; i < ratings.length; i++)
+{
+ td = ratings[i];
+ inner = td.innerHTML;
+
+ if (inner.substr(-1) == "%")
+ {
+ rating = Number(inner.substr(0, inner.length - 1));
+ if (rating < min_rating)
+ {
+ td.parentElement.parentElement.style.display = "none";
+ removed++;
+ }
+ }
+}
+
+console.log("Removed " + removed + " bad games.");</code>

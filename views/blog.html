@@ -1,0 +1,9 @@
+<div class="blog">
+	{{#each posts}}
+	<article id="{{{this.id}}}">
+		<h1><a href="#{{{this.id}}}">{{this.title}}</a></h1>
+		<time>{{this.date}}</time>
+		{{{this.text}}}
+	</article>
+	{{/each}}
+</div>

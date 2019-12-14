@@ -1,0 +1,64 @@
+Removing YouTube recommendations with Tampermonkey
+December 26, 2015
+<p>Now you’ve done it. You’ve accidentally clicked a link to click bait, a top 10 list, an annoying Let’s Player, or you’ve dared to see more than two videos on a certain subject matter. You’re cursed to always see thumbnails of garbage videos for the rest of time.</p>
+
+<img src="/static/blog/recom.jpg">
+
+<p>There’s a couple addons floating around that advertise removing all YouTube recommendations. They’re quite bloated though, and some of them didn’t seem to work for me. We’re programmers though, we can fix this. Enter Tampermonkey and mutation observers. It’s easy enough to remove all the parent elements of spans containing the word “Recommend”. YouTube has a load more button though, so a quick fix for that was  the use of mutation observers. These things observe elements, attributes, or the entire page for changes to the DOM and report back to javascript with them. So as new content is added to the list of videos, we can filter those too. The result is a nice, clean front page with only channels that you’ve subscribed to.
+
+You’ll need Tampermonkey from the web store <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en">here</a>.
+
+After you’ve installed that, press the icon in the top right and press Add new script. Paste the following code in and press CTRL+S to save.</p>
+
+<code>// ==UserScript==
+// @name Suggest-me-not
+// @namespace http://average.website
+// @version 1.0
+// @description Removes suggestions and recommendations on the YouTube front page for channels you aren't subscribed to.
+// @author William "JetBoom" Moodhe
+// @match https://www.youtube.com/
+// @grant none
+// @run-at document-end
+// ==/UserScript==
+/* jshint -W097 */
+//'use strict';
+
+function removeSuggestions()
+{
+	var spans = document.querySelectorAll("ol.section-list span");
+
+	// Remove ancestor li element of spans that have recommendations.
+	var span;
+	var par;
+	for (var i=0; i < spans.length; i++)
+	{
+		span = spans[i];
+
+		if (span.innerHTML == "Recommended channel for you" || span.innerHTML == "Recommended" || span.innerHTML == "Want all the latest updates? Subscribe now.")
+		{
+			par = span.parentElement;
+			while (par != null && par.nodeName.toLowerCase() != "li")
+			par = par.parentElement;
+
+			if (par != null)
+				par.style.display = "none";
+		}
+	}
+}
+
+// Mutation Observer to check for DOM changes to the section list.
+var content = document.querySelector("ol.section-list");
+if (content)
+{
+	var observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			removeSuggestions();
+		});
+	});
+	observer.observe(content, {childList: true, subtree: true});
+}
+
+// Immediately remove suggestions once.
+removeSuggestions();</code>
+
+<p>Enjoy YouTube without recommendations.</p>

@@ -1,0 +1,11 @@
+Dynamic TerrainCollider to MeshCollider
+February 13, 2015
+<p>Since Unity terrain collision is awful, especially with custom character controllers, I made a script that automatically takes terrain data, creates a mesh, and then replaces the TerrainCollider with a MeshCollider using the generated mesh. I didn’t feel like giving up the fancy features of terrain drawing and exporting the mesh to a modeling program is too retro for me.
+
+Since it’s run when the scene starts, it increases load times by a decent amount but shadows and baked stuff like that shouldn’t be changed. In order to compensate, I made it so a checkbox can be checked that puts the mesh in to the assets folder, which can then be attached manually in the editor. When you’re done testing your game you can export the generated meshes to actual assets to save load times.
+
+Attach it to any terrain object and it will do its magic when the scene loads. I’m using low resolution height maps. You should be prepared to load for like 2 minutes if you’re not.
+
+A lot of the script was taken from <a href="http://wiki.unity3d.com/index.php?title=TerrainObjExporter">TerrainObjExporter</a>. I had to do some changes in order to make the generated mesh exactly match up to the drawn terrain (flipping, reversing, rearranging indices, rotating).
+
+<a href="/unityassets/terraintomeshcollider.zip">Source code</a></p>
