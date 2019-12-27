@@ -1,6 +1,6 @@
-const fs = require('fs'),
-	path = require('path'),
-	winston = require('winston')
+const fs = require('fs')
+	, path = require('path')
+	, winston = require('winston')
 
 const router = require('express').Router()
 

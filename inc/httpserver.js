@@ -1,8 +1,8 @@
-const winston = require('winston'),
-	express = require('express'),
-	bodyParser = require('body-parser'),
-	//querystring = require('querystring'),
-	handlebarsExpress = require('express-handlebars')
+const winston = require('winston')
+	, express = require('express')
+	, bodyParser = require('body-parser')
+	//, querystring = require('querystring')
+	, handlebarsExpress = require('express-handlebars')
 
 const app = express()
 

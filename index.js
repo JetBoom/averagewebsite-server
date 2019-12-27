@@ -4,8 +4,10 @@ httpserver.listen(8051)
 
 function SIGINT() {
 	if (global.exiting)
-		return
+		return process.exit(0)
 	global.exiting = true
+
+	console.log('Exiting')
 
 	try {
 		httpserver.close()
