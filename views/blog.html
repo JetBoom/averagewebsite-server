@@ -1,9 +1,15 @@
+<nav class="side-nav-menu">
+	{{#each posts}}
+		<a href="#{{{this.id}}}">{{this.title}}</a>
+	{{/each}}
+</nav>
+
 <div class="blog">
 	{{#each posts}}
-	<article id="{{{this.id}}}">
-		<h1><a href="#{{{this.id}}}">{{this.title}}</a></h1>
-		<time>{{this.date}}</time>
-		{{{this.text}}}
-	</article>
+		<article id="{{{this.id}}}">
+			<h1><a href="#{{{this.id}}}">{{this.title}}</a></h1>
+			<time>{{this.date}}</time>
+			{{{this.text}}}
+		</article>
 	{{/each}}
 </div>
