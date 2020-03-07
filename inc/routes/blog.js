@@ -33,9 +33,7 @@ function updateBlogPosts() {
 			})
 		}
 
-		blogPosts.sort((a, b) => {
-			return b.timestamp - a.timestamp
-		})
+		blogPosts.sort((a, b) => b.timestamp - a.timestamp)
 	}
 	catch (e) {
 		winston.warn('Error updating blog posts: %s', String(e))
