@@ -2,23 +2,25 @@
 	<h1>Skills</h1>
 
 	<p class="center">Some things may be missing, these are just the major ones that people tend to look for.
-	See my <a href="https://github.com/JetBoom">GitHub</a> for some code examples.</p>
+	See my <a href="https://github.com/JetBoom">GitHub</a> for some code examples.
+
+	Anything with a <span level="l"></span> is something I'm still improving.
+	Consider everything else mastered and <span level="w"></span> to be wizard level.</p>
 
 	<div class="skillgroup">
 		<div>
 			<h3>Languages</h3>
 			<ul>
-				<li>JavaScript</li>
-				<li>C++</li>
-				<li>C</li>
+				<li level="w">JavaScript</li>
+				<li>C &amp; C++</li>
 				<li>C#</li>
 				<li>Java</li>
 				<li>PHP</li>
 				<li>Python</li>
-				<li>Lua</li>
+				<li level="w">Lua</li>
 				<li>VBA</li>
-				<li>bash</li>
-				<li>TypeScript</li>
+				<li level="l">bash</li>
+				<li level="l">TypeScript</li>
 				<li>SQL</li>
 				<li>Groovy</li>
 			</ul>
@@ -27,20 +29,19 @@
 		<div>
 			<h3>Databases</h3>
 			<ul>
+				<li level="w">MongoDB</li>
 				<li>MySQL</li>
 				<li>Postgres</li>
-				<li>NoSQL</li>
 				<li>SQLite</li>
-				<li>MongoDB</li>
 			</ul>
 		</div>
 
 		<div>
 			<h3>Backend</h3>
 			<ul>
-				<li>Node.js</li>
+				<li level="w">Node.js</li>
 				<li>.NET</li>
-				<li>Grails</li>
+				<li level="l">Grails</li>
 			</ul>
 		</div>
 	</div>
@@ -49,20 +50,19 @@
 		<div>
 			<h3>Frontend</h3>
 			<ul>
-				<li>HTML5</li>
-				<li>CSS3</li>
-				<li>JavaScript</li>
-				<li>MVC: React, Ember</li>
+				<li>React</li>
+				<li>Ember</li>
+				<li level="w">HTML5 / CSS3</li>
 				<li>SASS / Less</li>
 				<li>Handlebars</li>
-				<li>jQuery</li>
+				<li level="w">jQuery</li>
 			</ul>
 		</div>
 
 		<div>
 			<h3>Web servers</h3>
 			<ul>
-				<li>NGINX</li>
+				<li level="w">NGINX</li>
 				<li>Apache</li>
 				<li>IIS</li>
 			</ul>
@@ -81,9 +81,9 @@
 		<div>
 			<h3>Version Control &amp; Such</h3>
 			<ul>
-				<li>Git</li>
+				<li level="w">Git</li>
 				<li>Subversion</li>
-				<li>GitHub</li>
+				<li level="w">GitHub</li>
 				<li>Bitbucket</li>
 				<li>Jira</li>
 			</ul>
@@ -94,25 +94,34 @@
 			<ul>
 				<li>System Administration</li>
 				<li>Information Technology</li>
-				<li>MEAN stack</li>
-				<li>LAMP stack</li>
-				<li>REST principles</li>
+				<li level="w">MEAN stack</li>
+				<li level="l">LAMP stack</li>
+				<li level="w">REST principles</li>
 				<li>Virtual machines</li>
 				<li>Clustering</li>
-				<li>Atomic databases</li>
-				<li>Game development</li>
+				<li level="w">Atomic databases</li>
+				<li level="w">Game development</li>
 			</ul>
 		</div>
 
 		<div>
 			<h3>Programs &amp; Engines</h3>
 			<ul>
-				<li>Office / Excel</li>
+				<li level="w">Office / Excel</li>
 				<li>Photoshop</li>
-				<li>Source engine</li>
+				<li level="w">Source engine</li>
 				<li>Unreal 4 engine</li>
 				<li>Unity engine</li>
 			</ul>
 		</div>
 	</div>
 </div>
+
+<script>
+const levels = {
+	 w: 'fas fa-hat-wizard'
+	,l: 'fab fa-readme'
+}
+for (let ch in levels)
+	$('*[level="' + ch + '"]').prepend(`<i class="level level-${ch} ${levels[ch]}"></i>`)
+</script>

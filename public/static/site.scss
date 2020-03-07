@@ -390,6 +390,20 @@ h6 {
 	//height: 100%;
 }
 
+.skills .level {
+	color: lightgray;
+}
+
+.skills .level-w {
+	color: violet;
+}
+
+.skillgroup .level {
+	position: relative;
+	width: 0;
+	left: -1rem;
+}
+
 #back {
 	left:4px;
 	right:initial;
