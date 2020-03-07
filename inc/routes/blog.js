@@ -8,7 +8,7 @@ let blogPosts = [],
 	nextBlogPostsUpdate = 0
 
 function updateBlogPosts() {
-	const dir = __dirname + '/../../blogposts'
+	const dir = __dirname + '/../../assets/blogposts'
 	try {
 		const files = fs.readdirSync(dir)
 
