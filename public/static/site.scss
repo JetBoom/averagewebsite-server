@@ -382,12 +382,28 @@ h6 {
 .skills ul {
 	list-style-type: none;
 	font-size:13px;
-	//margin:0px 1rem;
-	//width:20em;
-	//border:1px solid #f55;
 	padding:1em;
-	//background:#1c1111;
-	//height: 100%;
+}
+
+.skills li {
+	position: relative;
+}
+
+.skills li div {
+	display: none;
+	flex-direction: column;
+	position: absolute;
+	z-index: 15;
+	background: #111d;
+	border: 1px solid white;
+	border-radius: 4px;
+	padding: 1rem;
+	white-space: nowrap;
+	cursor: zoom-in;
+}
+
+.skills li:hover div {
+	display: flex;
 }
 
 .skills .level {
